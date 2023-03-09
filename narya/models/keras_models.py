@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
+from classification_models.keras import Classifiers
 
 import mxnet as mx
 
@@ -27,13 +28,15 @@ def _build_resnet18():
         a tf.keras.models.Model
     Raises:
     """
-    resnet18_path_to_file = tf.keras.utils.get_file(
-        RESNET_ARCHI_TF_KERAS_NAME,
-        RESNET_ARCHI_TF_KERAS_PATH,
-        RESNET_ARCHI_TF_KERAS_TOTAR,
-    )
+    # resnet18_path_to_file = tf.keras.utils.get_file(
+    #     RESNET_ARCHI_TF_KERAS_NAME,
+    #     RESNET_ARCHI_TF_KERAS_PATH,
+    #     RESNET_ARCHI_TF_KERAS_TOTAR,
+    # )
 
-    resnet18 = tf.keras.models.load_model(resnet18_path_to_file)
+    # resnet18 = tf.keras.models.load_model(resnet18_path_to_file)
+    ResNet18, preprocess_input = Classifiers.get('resnet18')
+    resnet18 = ResNet18((256, 256, 3), weights='imagenet')
     resnet18.compile()
 
     inputs = resnet18.input

@@ -195,6 +195,13 @@ If you find any bug, please open an issue. If you see any improvements, or train
 
 A special thanks to [Last Row](https://twitter.com/lastrowview), for providing some tracking data at the beginning, to try our agent, and to [Soccermatics](https://twitter.com/Soccermatics) for providing Vizualisation tools (and some motivation to start this project).
 
+
+# Obs
+
+After update to latest modules versions, install gfootball (preferably from source):
+
+```https://github.com/google-research/football```
+
 # Citation
 
 If you use Narya in your research and would like to cite it, we suggest you use the following citation:

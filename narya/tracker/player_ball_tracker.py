@@ -118,6 +118,8 @@ class PlayerBallTracker:
                 online_im = plot_tracking(
                     resized_image, online_tlwhs, online_ids, frame_id=frame_id, fps=1.0
                 )
+
+                # print("Savind image {}test_{:05d}.jpg".format(save_tracking_folder,frame_id))
                 cv2.imwrite(
                     os.path.join(
                         save_tracking_folder + "test_{:05d}.jpg".format(frame_id)
