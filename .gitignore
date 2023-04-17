@@ -16,3 +16,8 @@ build/*
 # developer environments
 .idea
 .vscode
+
+
+*.jpg
+*.jpeg
+*.png

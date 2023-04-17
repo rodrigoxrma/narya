@@ -70,7 +70,7 @@ def get_perspective_transform_torch(src, dst):
     Raises:
 
     """
-    return kornia.get_perspective_transform(src, dst)
+    return kornia.geometry.transform.imgwarp.get_perspective_transform(src, dst)
 
 
 def get_perspective_transform_cv(src, dst):

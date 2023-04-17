@@ -252,3 +252,12 @@ Tool built by [@larsmaurath](https://github.com/larsmaurath) to label football i
 ## Tool for creation of keypoints datasets:
 
 Tool built by [@kkoripl](https://github.com/kkoripl) to create keypoints datasets - xml files and images resizing: https://github.com/kkoripl/NaryaKeyPointsDatasetCreator
+
+
+## Fix
+
+File ~/anaconda3/envs/narya/lib/python3.10/site-packages/kornia/geometry/transform/imgwarp.py:359, in get_perspective_transform(points_src, points_dst)
+
+b = points_dst.view(-1, 8, 1)
+to
+b = points_dst.contiguous().view(-1, 8, 1)
