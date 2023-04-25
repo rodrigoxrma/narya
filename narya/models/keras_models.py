@@ -28,15 +28,18 @@ def _build_resnet18():
         a tf.keras.models.Model
     Raises:
     """
-    # resnet18_path_to_file = tf.keras.utils.get_file(
-    #     RESNET_ARCHI_TF_KERAS_NAME,
-    #     RESNET_ARCHI_TF_KERAS_PATH,
-    #     RESNET_ARCHI_TF_KERAS_TOTAR,
-    # )
+    resnet18_path_to_file = tf.keras.utils.get_file(
+        RESNET_ARCHI_TF_KERAS_NAME,
+        RESNET_ARCHI_TF_KERAS_PATH,
+        RESNET_ARCHI_TF_KERAS_TOTAR,
+    )
+    resnet18 = tf.keras.models.load_model(resnet18_path_to_file)
 
-    # resnet18 = tf.keras.models.load_model(resnet18_path_to_file)
-    ResNet18, preprocess_input = Classifiers.get('resnet18')
-    resnet18 = ResNet18((256, 256, 3), weights='imagenet')
+
+    
+    # ResNet18, preprocess_input = Classifiers.get('resnet18')
+    # resnet18 = ResNet18((256, 256, 3), weights='imagenet')
+
     resnet18.compile()
 
     inputs = resnet18.input
@@ -80,15 +83,16 @@ class DeepHomoModel:
 
         return corners
 
+    #https://github.com/keras-team/keras/issues/13279#issuecomment-527705263
     def load_weights(self, weights_path):
         try:
             self.model.load_weights(weights_path)
             print("Succesfully loaded weights from {}".format(weights_path))
-        except:
+        except Exception as e:
             orig_weights = "Randomly"
             print(
-                "Could not load weights from {}, weights will be loaded {}".format(
-                    weights_path, orig_weights
+                "Could not load weights from {}, weights will be loaded {}. {}".format(
+                    weights_path, orig_weights, e
                 )
             )
 
